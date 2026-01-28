@@ -1,6 +1,6 @@
-# Network Topology Viewer (CCNA Lab Project)
+# Network Topology Viewer (Personal Lab Project)
 
-An interactive web app for visualizing CCNA-level lab topologies from YAML files.
+This is an interactive web app (streamlit-based) for visualizing lab topologies from YAML files, which has also been uploaded with topologies (sampled) to showcase basic network topology protocols and frameworks to use as a review asset in preparing for certifications.
 
 Built with **Streamlit**, **NetworkX**, and **PyVis**, this tool lets you:
 
@@ -92,19 +92,10 @@ links:
 
 Fields marked *optional* can be omitted without breaking the app.
 
-## How this fits a CCNA portfolio
-
-This project showcases:
-
-- Understanding of **topology design**: sites, routers, switches, point-to-point and access links.
-- Familiarity with **management addressing**, VLANs, and routing protocols at a CCNA level.
-- Basic **network monitoring concepts** using ICMP reachability.
-- Practical **Python + web UI** skills using Streamlit and simple graph visualization.
+## Future Enhancements to be made:
 
 Ideas for future enhancements:
 
 - Add SNMP-based interface status or utilization.
 - Tag links with OSPF areas or EIGRP AS numbers and color-code them.
 - Export diagrams or snapshots for use in change tickets or documentation.
-
-You can link to this folder from your main GitHub README as **"Network Topology Viewer (CCNA Lab Tool)"** and include screenshots/GIFs of the running app in your portfolio.
