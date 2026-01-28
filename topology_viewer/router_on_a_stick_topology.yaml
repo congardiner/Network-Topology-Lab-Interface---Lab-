@@ -1,0 +1,57 @@
+# Router-on-a-stick example
+
+sites:
+  - id: HQ
+    name: Headquarters
+
+nodes:
+  - id: R1
+    name: R1-HQ
+    site: HQ
+    role: router
+    mgmt_ip: 192.168.100.1
+    routing_protocol: static
+    vlans: [10, 20]
+  - id: SW1
+    name: SW1-HQ
+    site: HQ
+    role: switch
+    mgmt_ip: 192.168.100.2
+    vlans: [10, 20]
+  - id: PC1
+    name: PC1-VLAN10
+    site: HQ
+    role: host
+    mgmt_ip: 192.168.10.10
+    vlans: [10]
+  - id: PC2
+    name: PC2-VLAN20
+    site: HQ
+    role: host
+    mgmt_ip: 192.168.20.10
+    vlans: [20]
+
+links:
+  - id: TRUNK1
+    from: R1
+    to: SW1
+    description: Router-on-a-stick 802.1Q trunk
+    ip_a: 192.168.100.1/24
+    ip_b: 192.168.100.2/24
+    link_type: physical
+  - id: ACCESS_PC1
+    from: SW1
+    to: PC1
+    description: Access link VLAN 10
+    ip_a: 192.168.10.1/24
+    ip_b: 192.168.10.10/24
+    link_type: physical
+    vlan: 10
+  - id: ACCESS_PC2
+    from: SW1
+    to: PC2
+    description: Access link VLAN 20
+    ip_a: 192.168.20.1/24
+    ip_b: 192.168.20.10/24
+    link_type: physical
+    vlan: 20

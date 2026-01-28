@@ -1,0 +1,42 @@
+# Trunk ports and VLANs example
+
+sites:
+  - id: CAMPUS
+    name: Main Campus
+
+nodes:
+  - id: SW1
+    name: SW1-Access
+    site: CAMPUS
+    role: switch
+    mgmt_ip: 10.1.1.2
+    vlans: [10, 20, 30]
+  - id: SW2
+    name: SW2-Distribution
+    site: CAMPUS
+    role: switch
+    mgmt_ip: 10.1.1.3
+    vlans: [10, 20, 30]
+  - id: R1
+    name: R1-Gateway
+    site: CAMPUS
+    role: router
+    mgmt_ip: 10.1.1.1
+    routing_protocol: static
+    vlans: [10, 20, 30]
+
+links:
+  - id: TRUNK_SW1_SW2
+    from: SW1
+    to: SW2
+    description: Switch trunk carrying VLANs 10,20,30
+    ip_a: 10.1.1.2/30
+    ip_b: 10.1.1.3/30
+    link_type: physical
+  - id: TRUNK_SW2_R1
+    from: SW2
+    to: R1
+    description: Trunk to router gateway
+    ip_a: 10.1.1.3/30
+    ip_b: 10.1.1.1/30
+    link_type: physical

@@ -1,0 +1,48 @@
+# Single-area OSPF triangle example
+
+sites:
+  - id: RING
+    name: OSPF Ring
+
+nodes:
+  - id: R1
+    name: R1-Core
+    site: RING
+    role: router
+    mgmt_ip: 10.100.1.1
+    routing_protocol: ospf
+  - id: R2
+    name: R2-Core
+    site: RING
+    role: router
+    mgmt_ip: 10.100.2.1
+    routing_protocol: ospf
+  - id: R3
+    name: R3-Core
+    site: RING
+    role: router
+    mgmt_ip: 10.100.3.1
+    routing_protocol: ospf
+
+links:
+  - id: R1-R2
+    from: R1
+    to: R2
+    description: OSPF area 0 link
+    ip_a: 10.100.12.1/30
+    ip_b: 10.100.12.2/30
+    link_type: physical
+  - id: R2-R3
+    from: R2
+    to: R3
+    description: OSPF area 0 link
+    ip_a: 10.100.23.1/30
+    ip_b: 10.100.23.2/30
+    link_type: physical
+  - id: R3-R1
+    from: R3
+    to: R1
+    description: OSPF area 0 link
+    ip_a: 10.100.31.1/30
+    ip_b: 10.100.31.2/30
+    link_type: physical

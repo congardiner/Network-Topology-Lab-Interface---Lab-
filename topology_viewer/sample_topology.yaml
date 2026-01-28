@@ -1,0 +1,47 @@
+# Simple sample topology for the viewer
+# You can create more files like this for different labs.
+
+sites:
+  - id: HQ
+    name: Headquarters
+  - id: BR1
+    name: Branch 1
+
+nodes:
+  - id: R1
+    name: R1-HQ
+    site: HQ
+    role: router
+    mgmt_ip: 192.168.0.1
+    routing_protocol: ospf
+    vlans: [10, 20]
+  - id: SW1
+    name: SW1-HQ
+    site: HQ
+    role: switch
+    mgmt_ip: 192.168.0.2
+    vlans: [10, 20, 30]
+  - id: R2
+    name: R2-BR1
+    site: BR1
+    role: router
+    mgmt_ip: 10.0.0.1
+    routing_protocol: ospf
+    vlans: [30]
+
+links:
+  - id: WAN1
+    from: R1
+    to: R2
+    description: HQ-BR1 WAN
+    ip_a: 172.16.0.1/30
+    ip_b: 172.16.0.2/30
+    link_type: physical
+  - id: ACCESS1
+    from: R1
+    to: SW1
+    description: HQ access link
+    ip_a: 192.168.0.1/24
+    ip_b: 192.168.0.2/24
+    link_type: physical
+    vlan: 10

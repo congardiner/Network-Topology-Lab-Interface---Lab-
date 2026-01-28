@@ -1,0 +1,6 @@
+streamlit==1.40.0
+pyyaml==6.0.2
+ping3==4.0.8
+networkx==3.2.1
+pyvis==0.3.2
+pandas==2.2.3
